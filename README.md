@@ -1,4 +1,4 @@
-Matt Wright - February 25, 2019
+Matt Wright - 2/25/19
 
 # Data Structures
 
