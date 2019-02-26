@@ -49,7 +49,5 @@ class BinarySearchTree:
             if current.value > max:
                 max = current.value
                 current = current.right
-            # if current value is less than the max value
-            else:
-                current = current.right
+
         return max
