@@ -51,3 +51,39 @@ class BinarySearchTree:
                 current = current.right
 
         return max
+
+
+# contains
+# search the BST for the given target value, returning a boolean
+
+# base case #1: we've found the value we're looking for
+# check if the target value matches self.value on the current node
+# if target. == self.value:
+    # if so, return True
+    # return True
+# compare the target value against self.value
+    # if target < self.value
+    # if target < self.value:
+        # if self.left exists
+        # if self.left:
+        # call the left child's contains method, passing in the target value
+        # return self.left.contains(target)
+
+        # base case #2: we know that the target value should be in the left subtree
+        # but there's no left subtree
+        # else, return False
+        # else:
+        # return False
+
+    # if target >= self.value
+    # if target >= self.value
+       # if self.right exists
+       # if self.right:
+        # call the right child's contains method, passing in the target value
+        # return self.right.contains(target)
+
+        # base case 3: we know that the target value should be in the right subtree
+        # but there's no right subtree
+        # else, return False
+        # else:
+        # return False
