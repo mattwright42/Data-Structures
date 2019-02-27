@@ -60,22 +60,17 @@ class DoublyLinkedList:
         if not self.head:
             return None
         # single element in the list
-        if self.head == self.tail:
-            self.head.delete()
-            return None
-        # multiple elements
         else:
-            # create reference to head
             head = self.head
-            # run delete
             self.head.delete()
-            # return head.value
             return head.value
 
     def add_to_tail(self, value):
         current_tail = self.tail
         if not current_tail:
-            self.tail = ListNode(value)
+            new_node = ListNode(value)
+            self.head = new_node
+            self.tail = new_node
         else:
             current_tail.insert_after(value)
             self.tail = current_tail.next
@@ -118,26 +113,52 @@ class DoublyLinkedList:
             current_tail.next = node
 
     def delete(self, node):
-        if node.next is None and node.prev is not None:
-            node.prev.next = None
-            self.tail = node.prev
-            return node.value
-        if node.prev is None and node.next is not None:
-            node.next.prev = None
-            self.head = node.next
-            return node.value
-        if node.prev is None and node.next is None:
+        # check if the list is empty
+        if not self.head and not self.tail:
+            return None
+        # if the list only has a single node, delete it
+        # both self.head and self.tail should be None
+        if self.head == self.tail:
             self.head = None
             self.tail = None
-            return node.value
-        else:
+        # check if given node is the head
+        if self.head == node:
+            # set the self.head pointer to the next node
+            self.head = node.next
+            # delete the node
             node.delete()
 
-            if node == self.head:
-                self.head = node.next
-            if node == self.tail:
-                self.tail = node.prev
-        return node.value
+        # check if the given node is the tail
+        if self.tail == node:
+            # set the self.tail pointer to the previous node
+            self.tail = node.prev
+        # delete the node
+            node.delete()
+        # otherwise, the node we're looking to delete is in the middle of the list
+        else:
+            # just call node.delete
+            node.delete()
+
+        # if node.next is None and node.prev is not None:
+            #node.prev.next = None
+            #self.tail = node.prev
+            # return node.value
+        # if node.prev is None and node.next is not None:
+            #node.next.prev = None
+            #self.head = node.next
+            # return node.value
+        # if node.prev is None and node.next is None:
+            #self.head = None
+            #self.tail = None
+            # return node.value
+        # else:
+            # node.delete()
+
+            # if node == self.head:
+            #self.head = node.next
+            # if node == self.tail:
+            #self.tail = node.prev
+        # return node.value
 
     def get_max(self):
         # store max value in a variable
